@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<libreria>
+	<libro anyo="1994" categoria="REDES">
+		<titulo leng="en">TCP/IP Illustrated</titulo>
+		<autor>
+			<apellido>Stevens</apellido>
+			<nombre>Wilian</nombre>
+		</autor>
+		<editorial>Addison-Wesley</editorial>
+		<precio>65.95</precio>
+	</libro>
+	<libro anyo="2015" categoria="REDES">
+		<titulo leng="en">Cisco. Configuración</titulo>
+		<autor>
+			<apellido>García</apellido>
+			<nombre>Juan Antonio</nombre>
+		</autor>
+		<autor>
+			<apellido>Perez</apellido>
+			<nombre>Juan Pedro</nombre>
+		</autor>
+		<editorial>Addison-Wesley</editorial>
+		<precio>40</precio>
+	</libro>
+	<libro anyo="2010" categoria="REDES">
+		<titulo leng="es">TCP/IP Avanzado</titulo>
+		<autor>
+			<apellido>Perez</apellido>
+			<nombre>Juanillo.</nombre>
+		</autor>
+		<editorial>McGraw-Hill</editorial>
+		<precio>45.95</precio>
+	</libro>
+	<libro anyo="1992" categoria="UNIX">
+		<titulo leng="en">Advanced Programming for Unix environment</titulo>
+		<autor>
+			<apellido>Stevens</apellido>
+			<nombre>W.</nombre>
+		</autor>
+		<editorial>Addison-Wesley</editorial>
+		<precio>65.95</precio>
+		</libro>
+	<libro anyo="2000" categoria="WEB">
+		<titulo leng="en">Data on the Web</titulo>
+		<autor>
+			<apellido>Abiteboul</apellido>
+			<nombre>Serge</nombre>
+		</autor>
+		<autor>
+			<apellido>Buneman</apellido>
+			<nombre>Peter</nombre>
+		</autor>
+		<autor>
+			<apellido>Suciu</apellido>
+			<nombre>Dan</nombre>
+		</autor>
+		<editorial>McGraw-Hill</editorial>
+		<precio>39.95</precio>
+	</libro>
+	<libro anyo="2012" categoria="WEB">
+		<titulo leng="es">Aplicaciones Web</titulo>
+		<autor>
+			<apellido>Ramos</apellido>
+			<nombre>Alicia</nombre>
+		</autor>
+		<autor>
+			<apellido>Ramos</apellido>
+			<nombre>Maria Jesús</nombre>
+		</autor>
+		<editorial>Paraninfo</editorial>
+		<precio>30.95</precio>
+	</libro>
+	<libro anyo="2009" categoria="BASE DE DATOS">
+		<titulo leng="es">Bases de datos ofimáticas y corporativas</titulo>
+		<autor>
+			<apellido>Ramos</apellido>
+			<nombre>Alicia</nombre>
+		</autor>
+		<autor>
+			<apellido>Ramos</apellido>
+			<nombre>María Jesús</nombre>
+		</autor>
+		<editorial>Paraninfo</editorial>
+		<precio>19.95</precio>
+	</libro>
+	<libro anyo="2016" categoria="BASE DE DATOS">
+		<titulo leng="es">Bases de datos NOSQL</titulo>
+		<autor>
+			<apellido>Desconocido</apellido>
+			<nombre>Ficticio2</nombre>
+		</autor>
+		<editorial>GARCETA</editorial>
+		<precio>34.45</precio>
+	</libro>
+	<libro anyo="2016" categoria="BASE DE DATOS">
+		<titulo leng="es">Acceso a datos</titulo>
+		<autor>
+			<apellido>Ramos</apellido>
+			<nombre>Alicia</nombre>
+		</autor>
+		<autor>
+			<apellido>Ramos</apellido>
+			<nombre>María Jesús</nombre>
+		</autor>
+		<editorial>GARCETA</editorial>
+		<precio>26</precio>
+	</libro>
+	<libro anyo="2015" categoria="BASE DE DATOS">
+		<titulo leng="es">Gestion de Bases de datos</titulo>
+		<autor>
+			<apellido>López</apellido>
+			<nombre>Iván</nombre>
+		</autor>
+		<editorial>GARCETA</editorial>
+		<precio>24</precio>
+	</libro>
+	<libro anyo="2000" categoria="ECONOMIA">
+		<titulo leng="en"> Economics of Technology for Digital TV</titulo>
+		<editor>
+			<apellido>Gerbarg</apellido>
+			<nombre>Darcy</nombre>
+			<afiliacion>CITI</afiliacion>
+		</editor>
+		<autor>
+			<apellido>Ficticio1</apellido>
+			<nombre>Julián</nombre>
+		</autor>
+		<editorial>McGraw-Hill</editorial>
+		<precio>129.95</precio>
+	</libro>
+	
+</libreria>

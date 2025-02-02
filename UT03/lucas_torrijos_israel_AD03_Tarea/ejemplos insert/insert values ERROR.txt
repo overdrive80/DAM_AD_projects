@@ -1,0 +1,51 @@
+public boolean insertarNotaEvaluacion() {
+
+	Double notaEval = Double.parseDouble(nota.getText());
+	String nombreAlumno = getDatosAlumno(1);
+	int numAlumno = Integer.parseInt(getDatosAlumno(0));
+	String nombreAsigna = getDatosAsignatura(1);
+	int numAsigna = Integer.parseInt(getDatosAsignatura(0));
+	int numEval = Integer.parseInt(evaluacion.getText());
+	int rowCount = 0;
+
+	Session session = null;
+	Transaction transaction = null;
+
+	try {
+		session = sesionFactory.openSession();
+		transaction = session.beginTransaction();
+
+		// Crear la consulta HQL para la inserción
+		String hql = "INSERT INTO Evaluaciones (id.codEvaluacion, id.codAsig, id.numAlumno, nota) "
+				+ "VALUES (:numEval, :numAsigna, :numAlumno, :nota)"; //Da error poner objetos o atributos a objetos en las columnas de la tabla donde se inserta
+		MutationQuery query = session.createMutationQuery(hql);
+
+		// Establecer los parámetros de la consulta
+		query.setParameter("numEval", numEval);
+		query.setParameter("numAsigna", numAsigna);
+		query.setParameter("numAlumno", numAlumno);
+		query.setParameter("nota", nota);
+
+		// Ejecutar la consulta de inserción
+		rowCount = query.executeUpdate();
+
+		session.getTransaction().commit();
+
+	} catch (Exception e) {
+		// Deshacemos cambios
+		if (transaction != null) {
+			transaction.rollback();
+		}
+		GestionErrores.controlErroresGenericos(e);
+		return false;
+	} finally {
+		session.close();
+	}
+
+	String salida = String.format(
+			"Para el alumno %s se ha insertado la nota %.1f en la asignatura %s y evaluación %d.", nombreAlumno,
+			notaEval, nombreAsigna, numEval);
+	Registro.append(salida);
+
+	return rowCount > 0;
+}

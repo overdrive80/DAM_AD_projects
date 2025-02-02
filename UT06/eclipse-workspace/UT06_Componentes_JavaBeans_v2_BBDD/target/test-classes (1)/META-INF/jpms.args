@@ -1,0 +1,4 @@
+--patch-module
+clasesbean=_
+--add-reads
+clasesbean=ALL-UNNAMED

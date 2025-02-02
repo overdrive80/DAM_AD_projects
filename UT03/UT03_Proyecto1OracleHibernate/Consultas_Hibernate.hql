@@ -1,0 +1,1 @@
+select d.deptNo, d.dnombre from Departamentos d

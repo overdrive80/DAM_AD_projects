@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Build-Jdk-Spec: 17
+Class-Path: lib/ojdbc10.jar
+Created-By: Israel Lucas
+
+Name: beansaeropuerto/Pasaje.class
+Java-Bean: True
+
+Name: beansaeropuerto/Pasajero.class
+Java-Bean: False
+
+Name: beansaeropuerto/Vuelo.class
+Java-Bean: True
+
+Name: beansaeropuerto/BaseDatos.class
+Java-Bean: False
+
+Name: beansaeropuerto/Aeropuerto.class
+Java-Bean: True
+

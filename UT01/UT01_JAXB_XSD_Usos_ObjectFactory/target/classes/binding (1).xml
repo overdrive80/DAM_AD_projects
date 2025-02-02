@@ -1,0 +1,32 @@
+<jxb:bindings xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" version="2.1">
+    <!-- Esquema XSD -->
+    <jxb:bindings schemaLocation="centrosprofes.xsd">
+        <!-- Clase Centros -->
+        <jxb:bindings node="//xs:complexType[@name='tipoCentros']">
+            <jxb:class name="Centros"/>
+        </jxb:bindings>
+        <jxb:bindings node=".//xs:element[@name='centro']">
+            <jxb:property name="listaCentros"/>
+        </jxb:bindings>
+        <!-- Clase Centro -->
+        <jxb:bindings node="//xs:complexType[@name='tipoCentro']">
+            <jxb:class name="Centro"/>
+        </jxb:bindings>
+        <!-- Clase DatosCentro -->
+        <jxb:bindings node="//xs:complexType[@name='tipoDatosCentro']">
+            <jxb:class name="DatosCentro"/>
+        </jxb:bindings>
+        <!-- Clase Profesor -->
+        <jxb:bindings node="//xs:complexType[@name='tipoProfe']">
+            <jxb:class name="Profesor"/>
+        </jxb:bindings>
+        <!-- Clase Profesores -->
+        <jxb:bindings node="//xs:complexType[@name='tipoProfesores']">
+            <jxb:class name="Profesores"/>
+        </jxb:bindings>
+        <jxb:bindings node=".//xs:element[@name='profe']">
+            <jxb:property name="listaProfesores"/>
+        </jxb:bindings>
+    </jxb:bindings>
+</jxb:bindings>

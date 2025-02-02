@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- En los atributos del elemento raíz definimos las propiedades de pagina del informe -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+    name="InformeEntidades" orientation="Landscape" pageWidth="842" pageHeight="595" leftMargin="20"
+    rightMargin="20" topMargin="20" bottomMargin="20">
+    
+    <!-- Para aplicar stilos individuales -->
+    <style name="titulo" fontName="Century Gothic" isBold="true" fontSize="16"/>
+    <style name="subtitulo" fontName="Century Gothic"/>
+    <style name="cabecera" forecolor="#660C1A" fontName="Century Gothic" isBold="true"/>
+    <style name="detalle" fontName="Century Gothic"/>
+
+    <!-- Bandas -->
+    <style name="fila" mode="Transparent" fontName="Century Gothic">
+        <conditionalStyle>
+            <conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+            <style backcolor="#f0ded7"/>
+        </conditionalStyle>
+    </style>
+
+    <!-- Declaracion de parámetros -->
+    <parameter name="titulo" class="java.lang.String"/>
+    <parameter name="autor" class="java.lang.String"/>
+    <parameter name="hora" class="java.lang.String"/>
+    <parameter name="fecha" class="java.lang.String"/>
+
+    <!-- Consulta SQL -->
+    <queryString language="SQL">
+        <![CDATA[
+        SELECT E.CODENTIDAD AS CODENT, E.DESCRIPCION AS DESCRP, E.DIRECCION AS DIRECC, P.CODIGOPROYECTO AS CODPRO,
+            PA.IMPORTEAPORTACION AS IMPAPOR, TO_CHAR(PA.FECHAAPORTACION,'yyyy-MM-dd HH24:mm:ss') AS FECHAPOR, P.NOMBRE AS NOMPRO, P.PRESUPUESTO AS PREPRO
+        FROM PROYECTOS P
+            INNER JOIN PATROCINA PA ON (P.CODIGOPROYECTO = PA.CODIGOPROYECTO)
+            INNER JOIN ENTIDADES E ON (PA.CODENTIDAD = E.CODENTIDAD)
+    ]]>
+    </queryString>
+
+    <!-- Especificamos las columnas de la consulta que componen el informe -->
+    <field name="CODENT" class="java.lang.Integer"/>
+    <field name="DESCRP" class="java.lang.String"/>
+    <field name="DIRECC" class="java.lang.String"/>
+    <field name="CODPRO" class="java.lang.Integer"/>
+    <field name="IMPAPOR" class="java.lang.Float"/>
+    <field name="FECHAPOR" class="java.lang.String"/>
+    <field name="NOMPRO" class="java.lang.String"/>
+    <field name="PREPRO" class="java.lang.Float"/>
+
+    <!-- Titulo del informe -->
+    <title>
+        <band height="80">
+            <textField>
+                <!-- El ancho será toda la página menos los márgenes laterales 842-40=802. -->
+                <!-- Posicion -->
+                <reportElement x="0" y="10" width="802" height="40" style="titulo"/>
+                <!-- Formato -->
+                <textElement textAlignment="Center">
+                    <!-- <font size="16"/> Se ha indicado en el estilo -->
+                </textElement>
+                <!-- Valores -->
+                <textFieldExpression>
+                    <![CDATA[$P{titulo}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField>
+                <!-- El ancho será toda la página menos los márgenes laterales. Y así queda bien centrada. -->
+                <reportElement x="0" y="40" width="802" height="40" style="subtitulo"/>
+                <textElement textAlignment="Center">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA[
+                    "Realizado por: " + $P{autor} + " a las " + $P{hora} + " horas del día " + $P{fecha}
+                    ]]>
+                </textFieldExpression>
+            </textField>
+
+        </band>
+    </title>
+
+    <!-- Cabecera del informe -->
+    <columnHeader>
+
+        <band height="26">
+
+            <rectangle>
+                <reportElement x="0" y="0" width="802" height="25"/>
+            </rectangle>
+
+            <staticText>
+                <reportElement x="5" y="5" width="40" height="15" style="cabecera"/>
+                <text><![CDATA[CD-ENT]]></text>
+            </staticText>
+
+            <staticText>
+                <reportElement x="50" y="5" width="150" height="15" style="cabecera"/>
+                <text><![CDATA[DESCRIPCION]]></text>
+            </staticText>
+
+            <staticText>
+                <reportElement x="185" y="5" width="150" height="15" style="cabecera"/>
+                <text><![CDATA[DIRECCION]]></text>
+            </staticText>
+
+            <staticText>
+                <reportElement x="325" y="5" width="40" height="15" style="cabecera"/>
+                <text><![CDATA[CD-PRO]]></text>
+            </staticText>
+
+            <staticText>
+                <reportElement x="375" y="5" width="60" height="15" style="cabecera"/>
+                <text><![CDATA[IMPORTE-A]]></text>
+            </staticText>
+
+            <staticText>
+                <reportElement x="445" y="5" width="100" height="15" style="cabecera"/>
+                <text><![CDATA[FECHA-A]]></text>
+            </staticText>
+
+            <staticText>
+                <reportElement x="550" y="5" width="180" height="15" style="cabecera"/>
+                <text><![CDATA[NOMBRE PROYECTO]]></text>
+            </staticText>
+
+            <staticText>
+                <reportElement x="655" y="5" width="140" height="15" style="cabecera"/>
+                <textElement textAlignment="Right"/>
+                <text><![CDATA[PRESUPUESTO]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+
+    <!-- Area de detalle o datos -->
+    <detail>
+        <band height="30" splitType="Stretch">
+            <frame>
+                <!-- Si no ponemos el atributo mode a Opaque las bandas no aparecen -->
+                <reportElement mode="Opaque" x="0" y="0" width="802" height="30"  style="fila" />
+            
+                <textField textAdjust="StretchHeight">
+                    <reportElement x="5" y="5" width="40" height="30" style="detalle" />
+                    
+                    <textElement textAlignment="Center" />
+                    <textFieldExpression><![CDATA[$F{CODENT}]]></textFieldExpression>
+                </textField>
+
+                <textField textAdjust="StretchHeight">
+                    <reportElement x="50" y="5" width="150" height="30" style="detalle"/>
+                    <!-- <textElement verticalAlignment="Middle"/> -->
+                    <textFieldExpression><![CDATA[$F{DESCRP}]]></textFieldExpression>
+                </textField>
+
+                <textField textAdjust="StretchHeight">
+                    <reportElement x="185" y="5" width="150" height="30" style="detalle"/>
+                    <textFieldExpression><![CDATA[$F{DIRECC}]]></textFieldExpression>
+                </textField>
+
+                <textField textAdjust="StretchHeight">
+                    <reportElement x="325" y="5" width="40" height="30" style="detalle"/>
+                    <textElement textAlignment="Center"/>
+                    <textFieldExpression><![CDATA[$F{CODPRO}]]></textFieldExpression>
+                </textField>
+
+                <textField textAdjust="StretchHeight">
+                    <reportElement x="375" y="5" width="60" height="30" style="detalle"/>
+                    <textFieldExpression><![CDATA[$F{IMPAPOR}]]></textFieldExpression>
+                </textField >
+
+                <textField textAdjust="StretchHeight" >
+                    <reportElement x="445" y="5" width="100" height="30" style="detalle" />
+                    <textFieldExpression><![CDATA[$F{FECHAPOR}]]></textFieldExpression>
+                </textField>
+
+                <textField textAdjust="StretchHeight">
+                    <reportElement x="550" y="5" width="180" height="30" style="detalle"/>
+                    <textFieldExpression><![CDATA[$F{NOMPRO}]]></textFieldExpression>
+                </textField>
+
+                <textField textAdjust="StretchHeight" >
+                    <reportElement x="655" y="5" width="140" height="30" style="detalle"/>
+                    <textElement textAlignment="Right"/>
+                    <textFieldExpression><![CDATA[$F{PREPRO}]]></textFieldExpression>
+                </textField>
+            </frame>
+        </band>
+    </detail>
+
+    <!-- Pie de página -->
+    <pageFooter>
+        <band height="32" splitType="Stretch">
+            <line>
+                <reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1"/>
+                <graphicElement>
+                    <pen lineWidth="2.0" lineColor="#660C1A"/>
+                </graphicElement>
+            </line>
+
+            <!--Página actual -->
+            <textField>
+                <reportElement x="0" y="10" width="802" height="20"/>
+                <textElement textAlignment="Center">
+                    <font isBold="true" isItalic="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+ " de"]]></textFieldExpression>
+            </textField>
+
+            <!--Páginas totales. Usamos atributo: "tiempo de evaluación" para que 
+                se valore todo el informe en vez de la página actual -->
+            <textField evaluationTime="Report">
+                <reportElement x="32" y="10" width="802" height="20"/>
+                <textElement textAlignment="Center">
+                    <font isBold="true" isItalic="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]>
+                </textFieldExpression>
+            </textField>
+        </band>
+    </pageFooter>
+
+    <!-- Resumen -->
+    <summary>
+        <band height="35">
+            <rectangle>
+                <reportElement x="0" y="0" width="802" height="25"/>
+            </rectangle>
+
+            <textField>
+                <reportElement x="0" y="5" width="80" height="20" style="cabecera"/>
+                <textElement textAlignment="Center"/>
+                <textFieldExpression><![CDATA["TOTAL: " + String.valueOf($V{REPORT_COUNT})]]></textFieldExpression>
+            </textField>
+        </band>
+    </summary>
+
+</jasperReport>

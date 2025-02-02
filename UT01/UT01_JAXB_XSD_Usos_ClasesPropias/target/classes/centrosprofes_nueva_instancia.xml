@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<centros>
+    <centro>
+        <datoscentro>
+            <codigocentro>1</codigocentro>
+            <nombrecentro>IES Miguel de Cervantes</nombrecentro>
+            <direccion>Paseo Arroyomolinos, 66; 28938 Móstoles (Madrid)</direccion>
+            <director>
+                <codigoprofesor>1</codigoprofesor>
+                <nombreprofe>Israel Lucas</nombreprofe>
+                <salario>1500.0</salario>
+            </director>
+        </datoscentro>
+        <profesores>
+            <profe>
+                <codigoprofesor>1</codigoprofesor>
+                <nombreprofe>Israel Lucas</nombreprofe>
+                <salario>1500.0</salario>
+            </profe>
+        </profesores>
+    </centro>
+</centros>

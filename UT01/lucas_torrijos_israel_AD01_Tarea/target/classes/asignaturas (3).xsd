@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ies:schema xmlns:ies="http://www.w3.org/2001/XMLSchema"
+    xmlns:al="http://www.w3.org/2001/XMLSchema" xmlns:as="http://www.w3.org/2001/XMLSchema">
+
+    <as:element name="asignaturas">
+        <as:complexType mixed="false">
+            <as:sequence>
+                <as:element name="asig" type="tipoAsig" maxOccurs="unbounded"/>
+            </as:sequence>
+        </as:complexType>
+    </as:element>
+
+    <as:complexType name="tipoAsig">
+        <as:sequence>
+            <as:element name="codasig" type="as:integer"/>
+            <as:element name="nombre" type="as:string"/>
+            <as:element name="numalumnos" type="as:integer"/>
+            <as:element name="notamedia" type="as:decimal"/>
+            <as:element ref="alumnos"/>
+        </as:sequence>
+    </as:complexType>
+
+    <al:element name="alumnos">
+        <al:complexType>
+            <al:sequence>
+                <al:element name="alum" type="tipoAlum" minOccurs="0" maxOccurs="unbounded"/>
+            </al:sequence>
+        </al:complexType>
+    </al:element>
+
+    <al:complexType name="tipoAlum">
+        <al:sequence>
+            <al:element name="codigo" type="as:integer"/>
+            <al:element name="nombre" type="as:string"/>
+            <al:element name="curso" type="as:NMTOKEN"/>
+        </al:sequence>
+    </al:complexType>
+
+</ies:schema>

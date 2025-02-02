@@ -1,0 +1,7 @@
+patronFactoria\clasesDAO\Departamento.class
+patronFactoria\factorias\NeodatisDAOFactory.class
+patronFactoria\factorias\SQLDbDAOFactory.class
+patronFactoria\interfazDAO\DepartamentoDAO.class
+patronFactoria\factoria_abstracta\DAOFactory.class
+patronFactoria\interfazDAO_Impl\NeodatisDepartamentoImpl.class
+patronFactoria\interfazDAO_Impl\SQLDbDepartamentoImpl.class

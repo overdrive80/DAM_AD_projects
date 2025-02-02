@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<productos>
+<TITULO>DATOS DE NUEVOS PRODUCTOS</TITULO>
+<produc>
+    <cod_prod>8010</cod_prod>
+    <denominacion>Placa Base Tera</denominacion>
+    <precio>80</precio>
+    <stock_actual>5</stock_actual>
+    <stock_minimo>3</stock_minimo>
+    <cod_zona>80</cod_zona>
+  </produc>
+  <produc>
+    <cod_prod>8011</cod_prod>
+	<denominacion>Silla Plegable</denominacion>
+	<precio>40</precio>
+	<stock_actual>5</stock_actual>
+	<stock_minimo>2</stock_minimo>
+	<cod_zona>80</cod_zona>
+  </produc>
+  <produc>
+    <cod_prod>8012</cod_prod>
+    <denominacion>Bici plegable</denominacion>
+    <precio>270</precio>
+    <stock_actual>5</stock_actual>
+    <stock_minimo>3</stock_minimo>
+    <cod_zona>80</cod_zona>
+  </produc>
+  
+</productos>

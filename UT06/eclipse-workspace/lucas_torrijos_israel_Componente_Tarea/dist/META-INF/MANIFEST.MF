@@ -1,0 +1,57 @@
+Manifest-Version: 1.0 
+Class-Path: ojdbc10-19.22.0.0.jar
+
+Name: beansaeropuerto/Aeropuerto.class
+Java-Bean: True
+
+Name: beansaeropuerto/Pasaje.class
+Java-Bean: True
+
+Name: beansaeropuerto/Pasajero.class
+Java-Bean: True
+
+Name: beansaeropuerto/Vuelo.class
+Java-Bean: True
+
+Name: clasesfuncionales/BaseDatos.class
+Java-Bean: False
+
+Name: clasesfuncionales/GestorFechas.class
+Java-Bean: False
+
+Name: factoria/FactoriaDAO.class
+Java-Bean: False
+
+Name: factoria/OracleFactoria.class
+Java-Bean: False
+
+Name: factoria/test.class
+Java-Bean: False
+
+Name: implDAO/OracleAeropuertoDAO.class
+Java-Bean: False
+
+Name: implDAO/OraclePasajeDAO.class
+Java-Bean: False
+
+Name: implDAO/OraclePasajeroDAO.class
+Java-Bean: False
+
+Name: implDAO/OracleVueloDAO.class
+Java-Bean: False
+
+Name: implDAO/test2.class
+Java-Bean: False
+
+Name: interfacesDAO/AeropuertoDAO.class
+Java-Bean: False
+
+Name: interfacesDAO/PasajeDAO.class
+Java-Bean: False
+
+Name: interfacesDAO/PasajeroDAO.class
+Java-Bean: False
+
+Name: interfacesDAO/VueloDAO.class
+Java-Bean: False
+

@@ -1,0 +1,70 @@
+EJERC2
+Contadores Alumnos-Centro
+	select ce.cod_centro, count(a.nombre)
+	from centros ce 
+		left join cursos cu on ce.cod_centro = cu.cod_centro
+		left join alumnos a on cu.cod_curso  = a.cod_curso
+	group by ce.cod_centro;
+
+Contadores Cursos-Centro
+	select ce.cod_centro, count(cu.cod_curso)
+	from cursos cu 
+		inner join centros ce on cu.cod_centro = ce.cod_centro
+	group by ce.cod_centro;
+	
+Contadores Cursos-Alumnos
+	select cu.cod_curso, count(a.nombre)
+	from cursos cu 
+		left join alumnos a on cu.cod_curso  = a.cod_curso
+	group by cu.cod_curso;
+	
+Contadores Departamentos-Asignaturas
+	select dep.cod_depar, coalesce(count(asi.nombre),0)
+	from departamentos dep 
+		left join asignaturas asi on dep.cod_depar = asi.cod_depar
+	group by dep.cod_depar;
+	
+Contadores Alumnos-NotaMedia
+	SELECT
+		a.num_alumno,
+		AVG(nvl(e.nota, 0)) AS nota_media_evaluacion
+	FROM
+		alumnos a
+		LEFT JOIN evaluaciones e ON e.num_alumno = a.num_alumno
+	GROUP BY
+		a.num_alumno;
+EJERC3
+	select cu.cod_curso, cu.denominacion,
+           ce.cod_centro, ce.nombre, ce.localidad
+	from centros ce 
+		join cursos cu on ce.cod_centro = cu.cod_centro
+;
+
+EJER4
+NumAsignaturas por Centro
+select ce.cod_centro, ce.nombre,count(asi.cod_asig)
+from centros ce
+left join cursos cu on ce.cod_centro = cu.cod_centro
+left join asignaturas asi on cu.cod_curso = asi.cod_curso
+left join departamentos d on asi.cod_depar= d.cod_depar
+group by ce.cod_centro, ce.nombre
+order by ce.cod_centro;
+
+Promedios notas por evaluacion
+select a.num_alumno ,  coalesce(avg(e.nota),0)
+from alumnos a
+    left join evaluaciones e on a.num_alumno = e.num_alumno
+where a.num_alumno = 2010
+group by a.num_alumno, e.cod_evaluacion
+order by a.num_alumno
+    ;
+	
+--Actualizar notas de un alumno a otro
+UPDATE evaluaciones ev1
+SET ev1.nota = (
+	SELECT ev2.nota 
+	FROM evaluaciones ev2 
+	WHERE ev2.num_alumno = 1130 AND 
+	      ev2.cod_evaluacion = ev1.cod_evaluacion AND 
+		  ev2.cod_asig = ev1.cod_asig)
+WHERE ev1.num_alumno = 1031;

@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Class-Path: neodatis-odb-1.9.30.689.jar
+
+Name: MisBeans/Producto.class
+Java-Bean: True
+
+Name: MisBeans/Pedido.class
+Java-Bean: True
+
+Name: MisBeans/Venta.class
+Java-Bean: True
+
+Name: MisBeans/BaseDatos.class
+Java-Bean: False

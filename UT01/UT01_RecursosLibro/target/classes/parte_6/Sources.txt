@@ -1,0 +1,32 @@
+Para hacer unmarshalling
+----------------------------------------------------------------------------
+SAXSource saxSource = null;
+SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
+SAXParser saxParser = saxParserFactory.newSAXParser();
+
+// Obtener el XMLReader del SAXParser
+XMLReader xmlReader = saxParser.getXMLReader();
+
+// Crear un InputSource a partir de un flujo de entrada o un archivo XML
+InputSource inputSource = new InputSource(rutaXMLCentrosProfes);
+
+// Crear un objeto SAXSource
+saxSource = new SAXSource(xmlReader, inputSource);
+	
+JAXBElement<?> jaxbElement =  unmarshall.unmarshal(saxSource, Centros.class);
+centros = (Centros) jaxbElement.getValue();
+
+------------------------------------------------------------------------------
+DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+
+// Crear un Document representando tu documento XML (puedes cargarlo desde un archivo, por ejemplo)
+Document document = documentBuilder.parse(new File(rutaXMLCentrosProfes));
+
+// Aquí podrías construir o cargar el contenido del documento XML en el objeto 'document'
+
+// Crear un objeto DOMSource
+DOMSource domSource = new DOMSource(document);
+
+JAXBElement<?> jaxbElement =  unmarshall.unmarshal(domSource, Centros.class);
+centros = (Centros) jaxbElement.getValue();

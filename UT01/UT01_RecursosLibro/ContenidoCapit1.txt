@@ -1,0 +1,153 @@
+
+¦   ContenidoCapit1.txt
+¦   RecursosUnidad1.zip
+¦
++---EjemplosLibro
+¦   ¦   alumnos.xml
+¦   ¦   alumnosPlantilla.xsl
+¦   ¦   convertidor.java
+¦   ¦   CreaDir.java
+¦   ¦   CrearEmpleadoXml.java
+¦   ¦   ejemploExcepcion.java
+¦   ¦   ejemploExcepciones.java
+¦   ¦   ejemploExcepciones2.java
+¦   ¦   EscribirFichAleatorio.java
+¦   ¦   EscribirFichAleatorioUnReg.java
+¦   ¦   EscribirFichBytes.java
+¦   ¦   EscribirFichData.java
+¦   ¦   EscribirFichObject.java
+¦   ¦   EscribirFichTexto.java
+¦   ¦   EscribirFichTextoBuf.java
+¦   ¦   EscribirPersonas.java
+¦   ¦   EscribirPersonas2.java
+¦   ¦   LecturaEmpleadoXml.java
+¦   ¦   LeerFichAleatorio.java
+¦   ¦   LeerFichAleatorioUnReg.java
+¦   ¦   LeerFichBytes.java
+¦   ¦   LeerFichData.java
+¦   ¦   LeerFichObject.java
+¦   ¦   LeerFichTexto.java
+¦   ¦   LeerFichTextoBuf.java
+¦   ¦   LeerPersonas.java
+¦   ¦   ListaPersonas.java
+¦   ¦   MiObjectOutputStream.java
+¦   ¦   mipagina.html
+¦   ¦   ModifFichAleatorio.java
+¦   ¦   Persona.java
+¦   ¦   PrintFichTexto.java
+¦   ¦   PruebaSax1.java
+¦   ¦   renombrarFichero.java
+¦   ¦   VerDir.java
+¦   ¦   VerDir2.java
+¦   ¦   VerInf.java
+¦   ¦
+¦   +---EjemplosJAXB
+¦       +---Ejemplo1_JAXB
+¦       ¦   ¦   .classpath
+¦       ¦   ¦   .project
+¦       ¦   ¦   libreria.xml
+¦       ¦   ¦
+¦       ¦   +---.settings
+¦       ¦   ¦       org.eclipse.core.resources.prefs
+¦       ¦   ¦       org.eclipse.jdt.core.prefs
+¦       ¦   ¦
+¦       ¦   +---bin
+¦       ¦   ¦   +---clasesjaxb
+¦       ¦   ¦           Ejemplo1_JAXB.class
+¦       ¦   ¦           Libreria.class
+¦       ¦   ¦           Libro.class
+¦       ¦   ¦
+¦       ¦   +---src
+¦       ¦       +---clasesjaxb
+¦       ¦               Ejemplo1_JAXB.java
+¦       ¦               Libreria.java
+¦       ¦               Libro.java
+¦       ¦
+¦       +---Ejemplo2_JAXB_XSD
+¦       ¦   ¦   .classpath
+¦       ¦   ¦   .project
+¦       ¦   ¦   Copiaventasarticulos2.xml
+¦       ¦   ¦   ventasarticulos.xml
+¦       ¦   ¦
+¦       ¦   +---.settings
+¦       ¦   ¦       org.eclipse.jdt.core.prefs
+¦       ¦   ¦
+¦       ¦   +---bin
+¦       ¦   ¦   ¦   ventas_articulo.xsd
+¦       ¦   ¦   ¦
+¦       ¦   ¦   +---clasesdatos
+¦       ¦   ¦   ¦       DatosArtic.class
+¦       ¦   ¦   ¦       ObjectFactory.class
+¦       ¦   ¦   ¦       Ventas$Venta.class
+¦       ¦   ¦   ¦       Ventas.class
+¦       ¦   ¦   ¦       VentasType.class
+¦       ¦   ¦   ¦
+¦       ¦   ¦   +---operaciones
+¦       ¦   ¦           principal.class
+¦       ¦   ¦
+¦       ¦   +---libJAXB
+¦       ¦   ¦       jaxb-api.jar
+¦       ¦   ¦       jaxb-core.jar
+¦       ¦   ¦       jaxb-impl.jar
+¦       ¦   ¦       jaxb-jxc.jar
+¦       ¦   ¦       jaxb-xjc.jar
+¦       ¦   ¦
+¦       ¦   +---src
+¦       ¦       ¦   ventas_articulo.xsd
+¦       ¦       ¦
+¦       ¦       +---clasesdatos
+¦       ¦       ¦       DatosArtic.java
+¦       ¦       ¦       ObjectFactory.java
+¦       ¦       ¦       Ventas.java
+¦       ¦       ¦       VentasType.java
+¦       ¦       ¦
+¦       ¦       +---operaciones
+¦       ¦               principal.java
+¦       ¦
+¦       +---Ejemplo3_JAXB_XSD
+¦           ¦   .classpath
+¦           ¦   .project
+¦           ¦   nuevo_ventasarticulos.xml
+¦           ¦
+¦           +---.settings
+¦           ¦       org.eclipse.jdt.core.prefs
+¦           ¦
+¦           +---bin
+¦           ¦   ¦   ventas_articulo.xsd
+¦           ¦   ¦
+¦           ¦   +---clasesdatos
+¦           ¦   ¦       DatosArtic.class
+¦           ¦   ¦       ObjectFactory.class
+¦           ¦   ¦       Ventas$Venta.class
+¦           ¦   ¦       Ventas.class
+¦           ¦   ¦       VentasType.class
+¦           ¦   ¦
+¦           ¦   +---operaciones
+¦           ¦           principal.class
+¦           ¦
+¦           +---libJAXB
+¦           ¦       jaxb-api.jar
+¦           ¦       jaxb-core.jar
+¦           ¦       jaxb-impl.jar
+¦           ¦       jaxb-jxc.jar
+¦           ¦       jaxb-xjc.jar
+¦           ¦
+¦           +---src
+¦               ¦   ventas_articulo.xsd
+¦               ¦
+¦               +---clasesdatos
+¦               ¦       DatosArtic.java
+¦               ¦       ObjectFactory.java
+¦               ¦       Ventas.java
+¦               ¦       VentasType.java
+¦               ¦
+¦               +---operaciones
+¦                       principal.java
+¦
++---Software
+    ¦   jaxb-ri-2.2.11.zip
+    ¦   xstream-distribution-1.4.8-bin.zip
+    ¦
+    +---Conectores
+            kxml2-2.3.0.jar
+            xstream-1.4.8.jar

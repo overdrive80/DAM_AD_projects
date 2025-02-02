@@ -1,0 +1,1 @@
+--add-opens java.desktop/java.beans=ALL-UNNAMED --add-opens java.desktop/java.beans=neodatis.odb

@@ -1,0 +1,235 @@
+A) Crear los tipos de las referencias a las tablas, las tablas y llenarlas
+	--Borrado de tipos con dependencias de tipo o tabla
+	DROP TYPE fila_entidad FORCE;
+	DROP TYPE fila_recurso FORCE;
+	DROP TYPE fila_estudiante FORCE;
+
+	--Borramos tablas si existen
+	DROP TABLE tbl_entidades cascade constraint;
+	DROP TABLE tbl_recursos cascade constraint;
+	DROP TABLE tbl_estudiantes cascade constraint;/
+	  
+	--Creamos los tipos de las tablas
+	CREATE OR REPLACE TYPE fila_entidad AS OBJECT (
+		codentidad  NUMBER(10, 0),
+		descripcion VARCHAR2(30),
+		telefono    VARCHAR2(10),
+		direccion   VARCHAR2(40),
+		contacto    VARCHAR2(30)
+	);/
+
+	CREATE OR REPLACE TYPE fila_recurso AS OBJECT (
+		codrecurso  NUMBER(10, 0),
+		descripcion VARCHAR2(35),
+		unidades    NUMBER(10, 0),
+		distancia   NUMBER(10, 0),
+		extra       FLOAT,
+		pvp         FLOAT
+	);/
+
+	CREATE OR REPLACE TYPE fila_estudiante AS OBJECT (
+		codestudiante NUMBER(10, 0),
+		nombre        VARCHAR2(30),
+		direccion     VARCHAR2(40),
+		tlf           VARCHAR2(10),
+		fechaalta     DATE
+	);/
+
+	--Creamos las tablas
+	CREATE TABLE tbl_entidades OF fila_entidad (
+	  codentidad PRIMARY KEY
+	);/
+
+	CREATE TABLE tbl_recursos OF fila_recurso (
+	  codrecurso PRIMARY KEY
+	);/
+
+	CREATE TABLE tbl_estudiantes OF fila_estudiante (
+	  codestudiante PRIMARY KEY
+	);/
+	
+	--VACIADO Y LLENADO DE TABLA ENTIDADES
+	TRUNCATE TABLE tbl_entidades DROP STORAGE;
+	INSERT INTO tbl_entidades SELECT * FROM entidades;
+	/
+
+	--VACIADO Y LLENADO DE LA TABLA RECURSOS
+	TRUNCATE TABLE tbl_recursos DROP STORAGE;
+	INSERT INTO tbl_recursos SELECT * FROM recursos;
+	/
+
+	--VACIADO Y LLENADO DE LA TABLA ESTUDIANTES
+	TRUNCATE TABLE tbl_estudiantes DROP STORAGE;
+	INSERT INTO tbl_estudiantes SELECT * FROM estudiantes;
+
+B) Crear los tipos de las tablas anidadas, y las tablas anidadas.
+
+	--Borrado de tipos con dependencias de tipo o tabla
+	DROP TYPE fila_patrocina FORCE;
+	DROP TYPE fila_usa FORCE;
+	DROP TYPE fila_participa FORCE;
+	DROP TYPE tbl_patrocina FORCE;
+	DROP TYPE tbl_usa FORCE;
+	DROP TYPE tbl_participa FORCE;
+	/
+
+	--Creamos los tipos de las tablas
+	CREATE OR REPLACE TYPE fila_patrocina AS OBJECT (
+		codpatrocinio     NUMBER(10, 0),
+		entidad           REF fila_entidad, --análogo a clave foránea
+		importeaportacion FLOAT,
+		fechaaportacion   DATE
+	);
+	/
+
+	CREATE OR REPLACE TYPE fila_usa AS OBJECT (
+		coduso          NUMBER(10, 0),
+		recurso         REF fila_recurso, --análogo a clave foránea
+		cantidad        NUMBER(10, 0),
+		fechaasignacion DATE
+	);
+	/
+
+	CREATE OR REPLACE TYPE fila_participa AS OBJECT (
+		codparticipacion  NUMBER(10, 0),
+		estudiante        REF fila_estudiante, --análogo a clave foránea 
+		tipoparticipacion VARCHAR2(20),
+		numaportaciones   NUMBER(10, 0)
+	);
+	/
+
+	--Creamos las tablas anidadas
+	CREATE OR REPLACE TYPE tbl_patrocina AS TABLE OF fila_patrocina;
+	/
+	CREATE OR REPLACE TYPE tbl_usa AS TABLE OF fila_usa;
+	/
+	CREATE OR REPLACE TYPE tbl_participa AS TABLE OF fila_participa;
+	/ 
+	
+C) Crear la nueva tabla proyectos y llenarla de datos. Realizar un bloque PL para llenar los datos de
+proyectos si es necesario.
+
+	--Borrado de tipos con dependencias de tipo o tabla
+	DROP TYPE fila_proyecto FORCE;
+	DROP TABLE tbl_proyectos cascade constraint;
+
+	--Creamos los tipos de las tablas
+	CREATE OR REPLACE TYPE fila_proyecto AS OBJECT (
+		codigoproyecto  NUMBER(10, 0),
+		nombre          VARCHAR2(45),
+		fechainicio     DATE,
+		fechafin        DATE,
+		presupuesto     FLOAT,
+		extraaportacion FLOAT,
+		patrocina       tbl_ani_patrocina,
+		usa             tbl_ani_usa,
+		participa       tbl_ani_participa
+	);
+	/
+
+	CREATE TABLE tbl_proyectos OF fila_proyecto (
+	  codigoproyecto PRIMARY KEY,
+	  nombre UNIQUE
+	)
+	  NESTED TABLE patrocina STORE AS tbl_patrocina
+	  NESTED TABLE usa STORE AS tbl_usa
+	  NESTED TABLE participa STORE AS tbl_participa;
+	/
+
+	--VACIADO Y LLENADO DE LA TABLA PROYECTOS CON TABLAS ANIDADAS VACIAS
+	TRUNCATE TABLE tbl_proyectos DROP STORAGE;
+	INSERT INTO tbl_proyectos 
+	  SELECT p.codigoproyecto, p.nombre, p.fechainicio, p.fechafin, p.presupuesto, p.extraaportacion,
+			 tbl_ani_patrocina(), tbl_ani_usa(), tbl_ani_participa()
+	  FROM proyectos p;
+	/
+	--SI TUVIERA REFERENCIAS EN ALGUN CAMPO, PARA AÑADIR VALOR USAMOS REF(CAMPO)
+	--Y EN EL FROM HAY QUE PONER LA TABLA DEL CAMPO. SELECT...REF(TABLA.CAMPO) FROM ...,TABLA WHERE ...=TABLA.ID;
+
+	--BLOQUE PL/SQL
+	SET SERVEROUTPUT ON;
+
+	declare
+	  cursor proyectos is select * from tbl_proyectos;
+	  numProyecto number;
+	begin
+	  for fila in proyectos loop
+		numProyecto:= fila.codigoproyecto;
+		
+		/* BORRAMOS EL CONTENIDO PREVIO DE LAS TABLAS ANIDADAS */
+		delete from table (
+		  SELECT tbl_p.PATROCINA
+		  FROM tbl_proyectos tbl_p
+		  WHERE tbl_p.codigoproyecto = numProyecto); 
+		  
+		delete from table (
+		  SELECT tbl_p.USA
+		  FROM tbl_proyectos tbl_p
+		  WHERE tbl_p.codigoproyecto = numProyecto); 
+		  
+		delete from table (
+		  SELECT tbl_p.PARTICIPA
+		  FROM tbl_proyectos tbl_p
+		  WHERE tbl_p.codigoproyecto = numProyecto); 
+		
+		/* INSERTAMOS EL CONTENIDO DE LAS TABLAS ANIDADAS */
+		INSERT INTO TABLE (SELECT PATROCINA FROM TBL_PROYECTOS tbl_p 
+						   WHERE tbl_p.codigoproyecto = numProyecto) 
+		  (SELECT pa.codpatrocinio, REF(e), pa.importeaportacion, pa.fechaaportacion 
+			FROM PATROCINA pa, tbl_entidades e
+			WHERE pa.codentidad = e.codentidad 
+			AND pa.codigoproyecto = numProyecto);
+	   
+		 INSERT INTO TABLE (SELECT USA FROM TBL_PROYECTOS tbl_p 
+							WHERE tbl_p.codigoproyecto = numProyecto) 
+		  (SELECT usa.coduso, REF(r), usa.cantidad, usa.fechaasignacion
+			FROM USA usa, tbl_recursos r
+			WHERE usa.codrecurso = r.codrecurso 
+			AND usa.codigoproyecto = numProyecto);
+	  
+		INSERT INTO TABLE (SELECT PARTICIPA FROM TBL_PROYECTOS tbl_p 
+						   WHERE tbl_p.codigoproyecto = numProyecto) 
+		  (SELECT par.codparticipacion, ref(e), par.tipoparticipacion, par.numaportaciones
+			FROM PARTICIPA par, tbl_ESTUDIANTES e
+			WHERE par.codestudiante = e.codestudiante 
+			AND par.codigoproyecto = numProyecto);
+		
+	  end loop;
+	  
+
+	end;
+	/
+	
+D) Realizar las siguientes consultas utilizando sólo las tablas nuevas creadas
+
+	--CONSULTA 01
+	select p.codigoproyecto AS CODIGOPROYECTO, p.nombre AS NOMBREPROYECTO, 
+		   deref(par.estudiante).codestudiante AS CODESTUDIANTE, 
+		   deref(par.estudiante).nombre AS NOMBREESTUDIANTE, 
+		   deref(par.estudiante).direccion AS DIRECCIONESTUDIANTE,
+		   par.numaportaciones AS NUMAPORTACIONES, 
+		   par.numaportaciones * p.extraaportacion as IMPORTE
+	from tbl_proyectos p,table(p.participa) par;
+
+	--CONSULTA 02
+	select p.codigoproyecto AS CODIGOPROYECTO, p.nombre AS NOMBREPROYECTO,
+		   sum(pat.importeaportacion), count(pat.importeaportacion)
+	from tbl_proyectos p,table(p.patrocina) pat
+	group by p.codigoproyecto, p.nombre;
+
+	--CONSULTA 03
+	select tes.codestudiante AS CODESTUDIANTE, tes.nombre AS NOMBRE, tes.direccion as DIRECCIÓN
+	from tbl_estudiantes Tes
+	where Tes.codestudiante not in (
+		select distinct deref(par.estudiante).codestudiante
+		from tbl_proyectos p, table(p.participa) par
+	);
+
+	--CONSULTA 04
+	SELECT 
+		p.codigoproyecto AS CODIGOPROYECTO, p.nombre AS NOMBRE,
+		   NVL(SUM(deref(us.recurso).PVP*deref(us.recurso).unidades),0) AS TOTALGASTO_SINEXTRA,
+		   NVL(SUM((deref(us.recurso).extra+deref(us.recurso).PVP)*deref(us.recurso).unidades),0) AS TOTALGASTO
+	FROM tbl_proyectos p
+	LEFT JOIN TABLE(p.usa) us ON 1=1
+	GROUP BY p.codigoproyecto, p.nombre;

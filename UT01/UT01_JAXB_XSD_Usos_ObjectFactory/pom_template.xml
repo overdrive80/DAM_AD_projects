@@ -1,0 +1,144 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>nadena</groupId>
+	<artifactId>tarea</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<dependencies>
+		<!-- Proporciona la correlación de clases Java con documentos XML:
+		unmarshalling, marshalling, validation -->
+		<dependency>
+			<groupId>jakarta.xml.bind</groupId>
+			<artifactId>jakarta.xml.bind-api</artifactId>
+			<version>4.0.1</version>
+		</dependency>
+
+		<!-- Contiene las fuentes necesarias para el procesamiento en tiempo de
+		ejecución -->
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+			<version>4.0.4</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!-- XStream es una biblioteca simple y rápida para serializar objetos a
+		XML
+		 y viceversa, con una huella de memoria reducida. -->
+		<dependency>
+			<groupId>com.thoughtworks.xstream</groupId>
+			<artifactId>xstream</artifactId>
+			<version>1.4.2</version>
+		</dependency>
+
+		<!-- Contiene las fuentes requeridas por los módulos XJC, JXC y Runtime -->
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-core</artifactId>
+			<version>4.0.4</version>
+		</dependency>
+
+		<!-- Implementación de JAXB -->
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+			<version>4.0.4</version>
+		</dependency>
+
+		<!-- Genera clases de java a partir de un esquema XSD -->
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-xjc</artifactId>
+			<version>4.0.4</version>
+		</dependency>
+
+		<!-- Genera un esquema XSD a partir de clases de java -->
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-jxc</artifactId>
+			<version>4.0.4</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!-- Esto permite exportar a una carpeta las dependencias maven 
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>process-sources</phase>
+
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+
+						<configuration>
+							<outputDirectory>${project.build.directory}/lib</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>  -->
+			<!-- Esto permite la creación de clases java a partir de un xsd -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxb2-maven-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<id>xjc</id>
+						<goals>
+							<goal>xjc</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<!-- podemos especificar una fuente dtd, xmlschema, relaxng,
+					relaxng-compact, wsdl -->
+					<sourceType>XmlSchema</sourceType>
+					<xjbSources>
+						<xjbSource>src/main/resources/config.xjb</xjbSource>
+					</xjbSources>
+					<!-- reemplaza src/main/xsd como el directorio que contiene
+					los archivos XSD. Podemos especificar
+					una carpeta o archivos especificos -->
+					<sources>
+						<source>src/main/resources/centroprofes.xsd</source>
+					</sources>
+					<!-- ${project.build.directory} es target -->
+					<outputDirectory>${project.basedir}/src/main/java</outputDirectory>
+					<clearOutputDir>true</clearOutputDir>
+				</configuration>
+			</plugin> 
+			<!-- Esto permite la creación de xsd a partir de clases java-->
+			<!--<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxb2-maven-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<id>schemagen</id>
+						<goals>
+							<goal>schemagen</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<sources>
+						<source>src/main/java/com/baeldung/jaxb/gen</source>
+					</sources>
+					<outputDirectory>src/main/resources</outputDirectory>
+					<clearOutputDir>false</clearOutputDir>
+					<transformSchemas>
+						<transformSchema>
+							<uri>/jaxb/gen</uri>
+							<toPrefix>user</toPrefix>
+							<toFile>user-gen.xsd</toFile>
+						</transformSchema>
+					</transformSchemas>
+				</configuration>
+			</plugin>-->
+		</plugins>
+	</build>
+</project>

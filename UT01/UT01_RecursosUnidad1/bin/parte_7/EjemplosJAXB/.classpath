@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="Ejemplo2_JAXB_XSD/libJAXB/jaxb-api.jar"/>
+	<classpathentry kind="lib" path="Ejemplo2_JAXB_XSD/libJAXB/jaxb-core.jar"/>
+	<classpathentry kind="lib" path="Ejemplo2_JAXB_XSD/libJAXB/jaxb-impl.jar"/>
+	<classpathentry kind="lib" path="Ejemplo2_JAXB_XSD/libJAXB/jaxb-jxc.jar"/>
+	<classpathentry kind="lib" path="Ejemplo2_JAXB_XSD/libJAXB/jaxb-xjc.jar"/>
+	<classpathentry kind="lib" path="Ejemplo3_JAXB_XSD/libJAXB/jaxb-api.jar"/>
+	<classpathentry kind="lib" path="Ejemplo3_JAXB_XSD/libJAXB/jaxb-core.jar"/>
+	<classpathentry kind="lib" path="Ejemplo3_JAXB_XSD/libJAXB/jaxb-impl.jar"/>
+	<classpathentry kind="lib" path="Ejemplo3_JAXB_XSD/libJAXB/jaxb-jxc.jar"/>
+	<classpathentry kind="lib" path="Ejemplo3_JAXB_XSD/libJAXB/jaxb-xjc.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

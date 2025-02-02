@@ -1,0 +1,104 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>UT06_Tarea</groupId>
+  <artifactId>UT06_Tarea_Componente</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>lucas_torrijos_israel_Componente</name>
+  
+   <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <package.misbeans>beansaeropuerto</package.misbeans>
+    </properties>
+    
+    <build>
+        <plugins>
+            <!-- Esto permite exportar a una carpeta las dependencias maven -->
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            
+            <!-- Plugin para configurar el MANIFEST.MF -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <!-- Especificar la clase principal para ejecutar 
+                            <Main-Class>your.package.MainClassName</Main-Class> --> 
+                        </manifest>
+                        <manifestEntries>
+                            <!-- Agregar clases específicas al Class-Path -->
+                            <Class-Path>lib/ojdbc10.jar</Class-Path>
+                            <Created-By>Israel Lucas</Created-By> 
+                        </manifestEntries>
+                        
+                        <manifestSections>
+                            <manifestSection>
+                                <name>${package.misbeans}/Aeropuerto.class</name>
+                                <manifestEntries>
+                                    <Java-Bean>True</Java-Bean>
+                                </manifestEntries>
+                            </manifestSection>
+                            
+                            <manifestSection>
+                                <name>${package.misbeans}/Vuelo.class</name>
+                                <manifestEntries>
+                                    <Java-Bean>True</Java-Bean>
+                                </manifestEntries>
+                            </manifestSection>
+                            
+                            <manifestSection>
+                                <name>${package.misbeans}/Pasaje.class</name>
+                                <manifestEntries>
+                                    <Java-Bean>True</Java-Bean>
+                                </manifestEntries>
+                            </manifestSection>
+                            
+                            <manifestSection>
+                                <name>${package.misbeans}/Pasajero.class</name>
+                                <manifestEntries>
+                                    <Java-Bean>False</Java-Bean>
+                                </manifestEntries>
+                            </manifestSection>
+							<manifestSection>
+                                <name>${package.misbeans}/BaseDatos.class</name>
+                                <manifestEntries>
+                                    <Java-Bean>False</Java-Bean>
+                                </manifestEntries>
+                            </manifestSection>
+                        </manifestSections>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    
+    <dependencies>
+
+		<!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc10 -->
+		<dependency>
+			<groupId>com.oracle.database.jdbc</groupId>
+			<artifactId>ojdbc10</artifactId>
+			<version>19.22.0.0</version>
+		</dependency>
+
+    </dependencies>
+    
+  
+</project>

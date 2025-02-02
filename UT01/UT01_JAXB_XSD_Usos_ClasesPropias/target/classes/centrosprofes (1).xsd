@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified">
+
+	<xsd:element name="centros" type="tipoCentros" />
+
+	<xsd:complexType name="tipoCentros">
+		<xsd:sequence>
+			<xsd:element name="centro" minOccurs="1" maxOccurs="unbounded" type="tipoCentro" />
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="tipoCentro">
+		<xsd:sequence>
+			<xsd:element name="datoscentro" type="tipoDatosCentro" />
+			<xsd:element name="profesores" type="tipoProfesores" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="tipoDatosCentro">
+		<xsd:sequence>
+			<xsd:element name="codigocentro" type="xsd:integer" />
+			<xsd:element name="nombrecentro" type="xsd:string" />
+			<xsd:element name="direccion" type="xsd:string" />
+			<xsd:element name="director" type="tipoProfe" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tipoProfe">
+		<xsd:sequence>
+			<xsd:element name="codigoprofesor" type="xsd:integer" />
+			<xsd:element name="nombreprofe" type="xsd:string" />
+			<xsd:element name="salario" type="xsd:float" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="tipoProfesores">
+		<xsd:sequence>
+			<xsd:element name="profe" minOccurs="1" maxOccurs="unbounded" type="tipoProfe" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+</xsd:schema>

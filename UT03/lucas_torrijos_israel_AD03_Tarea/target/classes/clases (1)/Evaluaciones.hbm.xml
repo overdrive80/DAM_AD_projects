@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 1 ene 2024 11:36:06 by Hibernate Tools 6.3.1.Final -->
+<hibernate-mapping>
+ <class name="clases.Evaluaciones" optimistic-lock="none" table="EVALUACIONES">
+  <composite-id class="clases.EvaluacionesId" mapped="false" name="id" unsaved-value="undefined">
+   <key-property name="codAsig" type="int">
+    <column name="COD_ASIG" precision="5" scale="0"/>
+   </key-property>
+   <key-property name="codEvaluacion" type="int">
+    <column name="COD_EVALUACION" precision="5" scale="0"/>
+   </key-property>
+   <key-property name="numAlumno" type="int">
+    <column name="NUM_ALUMNO" precision="5" scale="0"/>
+   </key-property>
+  </composite-id>
+  <many-to-one class="clases.Asignaturas" fetch="select" insert="false"
+   name="asignaturas" update="false">
+   <column name="COD_ASIG" not-null="true" precision="5" scale="0"/>
+  </many-to-one>
+  <many-to-one class="clases.Alumnos" fetch="select" insert="false"
+   name="alumnos" update="false">
+   <column name="NUM_ALUMNO" not-null="true" precision="5" scale="0"/>
+  </many-to-one>
+  <property generated="never" lazy="false" name="nota" type="double">
+   <column name="NOTA" precision="3"/>
+  </property>
+ </class>
+</hibernate-mapping>

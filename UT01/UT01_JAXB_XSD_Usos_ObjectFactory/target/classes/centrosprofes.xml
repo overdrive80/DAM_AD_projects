@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<centros xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="centrosprofes.xsd">
+  <centro>
+    <datoscentro>
+      <codigocentro>1</codigocentro>
+      <nombrecentro>IES RIBERA DEL TAJO</nombrecentro>
+      <direccion>AVDA REAL FABRICA DE SEDAS S/N</direccion>
+      <director>
+        <codigoprofesor>1234</codigoprofesor>
+        <nombreprofe>Andrés García</nombreprofe>
+        <salario>1800.25</salario>
+      </director>
+    </datoscentro>
+    <profesores>
+      <profe>
+        <codigoprofesor>1240</codigoprofesor>
+        <nombreprofe>Antonio García</nombreprofe>
+        <salario>1400.25</salario>
+      </profe>
+      <profe>
+        <codigoprofesor>1223</codigoprofesor>
+        <nombreprofe>Alicia Ramos</nombreprofe>
+        <salario>1555.25</salario>
+      </profe>
+      <profe>
+        <codigoprofesor>3422</codigoprofesor>
+        <nombreprofe>Julián Salmero</nombreprofe>
+        <salario>1678.25</salario>
+      </profe>
+    </profesores>
+  </centro>
+  <centro>
+    <datoscentro>
+      <codigocentro>2</codigocentro>
+      <nombrecentro>IES LA CAÑADA</nombrecentro>
+      <direccion>AVDA FERNÁNDEZ GIL 20</direccion>
+      <director>
+        <codigoprofesor>1201</codigoprofesor>
+        <nombreprofe>Alicia Gil</nombreprofe>
+        <salario>1600.25</salario>
+      </director>
+    </datoscentro>
+    <profesores>
+      <profe>
+        <codigoprofesor>1203</codigoprofesor>
+        <nombreprofe>Paco Alborán</nombreprofe>
+        <salario>1400.25</salario>
+      </profe>
+      <profe>
+        <codigoprofesor>1204</codigoprofesor>
+        <nombreprofe>Manuela Sanz</nombreprofe>
+        <salario>1556.25</salario>
+      </profe>
+      <profe>
+        <codigoprofesor>1208</codigoprofesor>
+        <nombreprofe>Andrés Ramos</nombreprofe>
+        <salario>2500.25</salario>
+      </profe>
+      <profe>
+        <codigoprofesor>12301</codigoprofesor>
+        <nombreprofe>Antonio Casado</nombreprofe>
+        <salario>1900.25</salario>
+      </profe>
+      <profe>
+        <codigoprofesor>120922</codigoprofesor>
+        <nombreprofe>María Pérez</nombreprofe>
+        <salario>1677.25</salario>
+      </profe>
+    </profesores>
+  </centro>
+  <centro>
+    <datoscentro>
+      <codigocentro>5</codigocentro>
+      <nombrecentro>IES LA CORCHUELA</nombrecentro>
+      <direccion>AVDA LOS TRES RÍOS 23</direccion>
+      <director>
+        <codigoprofesor>5010</codigoprofesor>
+        <nombreprofe>Roberto García</nombreprofe>
+        <salario>1800.25</salario>
+      </director>
+    </datoscentro>
+    <profesores>
+      <profe>
+        <codigoprofesor>5203</codigoprofesor>
+        <nombreprofe>Pablo Garrido</nombreprofe>
+        <salario>1700.20</salario>
+      </profe>
+      <profe>
+        <codigoprofesor>5201</codigoprofesor>
+        <nombreprofe>Alberto Morán</nombreprofe>
+        <salario>1596.0</salario>
+      </profe>
+      <profe>
+        <codigoprofesor>52342</codigoprofesor>
+        <nombreprofe>Juana Siesta</nombreprofe>
+        <salario>1500.25</salario>
+      </profe>
+    </profesores>
+  </centro>
+</centros>

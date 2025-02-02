@@ -1,0 +1,13 @@
+		} catch (SQLException e) {
+			if (e.getErrorCode() == 1062)
+				System.out.println("CLAVE PRIMARIA DUPLICADA");
+			else if (e.getErrorCode() == 1452)
+				System.out.println("CLAVE AJENA " + dep + " NO EXISTE");
+
+			else {
+				System.out.println("HA OCURRIDO UNA EXCEPCIÓN:");
+				System.out.println("Mensaje:    " + e.getMessage());
+				System.out.println("SQL estado: " + e.getSQLState());
+				System.out.println("Cód error:  " + e.getErrorCode());
+			}
+		}

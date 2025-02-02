@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<asignaturas>
+    <asig>
+        <codasig>1</codasig>
+        <nombre>Tecnologías</nombre>
+        <numalumnos>5</numalumnos>
+        <notamedia>6.7</notamedia>
+        <alumnos>
+            <alum>
+                <codigo>2</codigo>
+                <nombre>Ana Isabel Marín</nombre>
+                <curso>2ESO</curso>
+            </alum>
+            <alum>
+                <codigo>23</codigo>
+                <nombre>María Casado</nombre>
+                <curso>2ESO</curso>
+            </alum>
+            <alum>
+                <codigo>14</codigo>
+                <nombre>Pablo Almeida</nombre>
+                <curso>3ESO</curso>
+            </alum>
+            <alum>
+                <codigo>5</codigo>
+                <nombre>Ana María Roldán</nombre>
+                <curso>3ESO</curso>
+            </alum>
+            <alum>
+                <codigo>18</codigo>
+                <nombre>Juan Manuel López</nombre>
+                <curso>3ESO</curso>
+            </alum>
+        </alumnos>
+    </asig>
+    <asig>
+        <codasig>4</codasig>
+        <nombre>Matemáticas I</nombre>
+        <numalumnos>5</numalumnos>
+        <notamedia>6.4199996</notamedia>
+        <alumnos>
+            <alum>
+                <codigo>7</codigo>
+                <nombre>Arturo Gil</nombre>
+                <curso>1ESO</curso>
+            </alum>
+            <alum>
+                <codigo>6</codigo>
+                <nombre>Tomás Valverde</nombre>
+                <curso>1ESO</curso>
+            </alum>
+            <alum>
+                <codigo>1</codigo>
+                <nombre>Alicia García</nombre>
+                <curso>1ESO</curso>
+            </alum>
+            <alum>
+                <codigo>5</codigo>
+                <nombre>Ana María Roldán</nombre>
+                <curso>3ESO</curso>
+            </alum>
+            <alum>
+                <codigo>20</codigo>
+                <nombre>Fernando Albricio</nombre>
+                <curso>2ESO</curso>
+            </alum>
+        </alumnos>
+    </asig>
+    <asig>
+        <codasig>6</codasig>
+        <nombre>Matemáticas II</nombre>
+        <numalumnos>5</numalumnos>
+        <notamedia>6.4199996</notamedia>
+        <alumnos>
+            <alum>
+                <codigo>20</codigo>
+                <nombre>Fernando Albricio</nombre>
+                <curso>2ESO</curso>
+            </alum>
+            <alum>
+                <codigo>23</codigo>
+                <nombre>María Casado</nombre>
+                <curso>2ESO</curso>
+            </alum>
+            <alum>
+                <codigo>2</codigo>
+                <nombre>Ana Isabel Marín</nombre>
+                <curso>2ESO</curso>
+            </alum>
+            <alum>
+                <codigo>5</codigo>
+                <nombre>Ana María Roldán</nombre>
+                <curso>3ESO</curso>
+            </alum>
+            <alum>
+                <codigo>14</codigo>
+                <nombre>Pablo Almeida</nombre>
+                <curso>3ESO</curso>
+            </alum>
+        </alumnos>
+    </asig>
+    <asig>
+        <codasig>8</codasig>
+        <nombre>Plástica</nombre>
+        <numalumnos>3</numalumnos>
+        <notamedia>8.599999</notamedia>
+        <alumnos>
+            <alum>
+                <codigo>23</codigo>
+                <nombre>María Casado</nombre>
+                <curso>2ESO</curso>
+            </alum>
+            <alum>
+                <codigo>20</codigo>
+                <nombre>Fernando Albricio</nombre>
+                <curso>2ESO</curso>
+            </alum>
+            <alum>
+                <codigo>2</codigo>
+                <nombre>Ana Isabel Marín</nombre>
+                <curso>2ESO</curso>
+            </alum>
+        </alumnos>
+    </asig>
+    <asig>
+        <codasig>10</codasig>
+        <nombre>Filosofía</nombre>
+        <numalumnos>3</numalumnos>
+        <notamedia>6.866667</notamedia>
+        <alumnos>
+            <alum>
+                <codigo>1</codigo>
+                <nombre>Alicia García</nombre>
+                <curso>1ESO</curso>
+            </alum>
+            <alum>
+                <codigo>2</codigo>
+                <nombre>Ana Isabel Marín</nombre>
+                <curso>2ESO</curso>
+            </alum>
+            <alum>
+                <codigo>5</codigo>
+                <nombre>Ana María Roldán</nombre>
+                <curso>3ESO</curso>
+            </alum>
+        </alumnos>
+    </asig>
+    <asig>
+        <codasig>12</codasig>
+        <nombre>Digitalización</nombre>
+        <numalumnos>0</numalumnos>
+        <notamedia>0.0</notamedia>
+        <alumnos/>
+    </asig>
+</asignaturas>

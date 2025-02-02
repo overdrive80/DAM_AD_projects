@@ -1,0 +1,116 @@
+EJERC2
+Contadores Alumnos-Centro
+	HIBERNATE 5.
+	select ce.codCentro, coalesce(count(a.nombre),0)
+	from Centros ce
+		left join Cursos cu on (ce.codCentro = cu.centros.codCentro)
+		left join Alumnos a on (cu.codCurso = a.cursos.codCurso)
+		group by ce.codCentro
+		
+	Hibernate 6 e Hibernate 5 si en HQL Editor seleccionamos el dialecto Oracle 10g
+	select ce.codCentro, coalesce(count(a.nombre),0)
+	from Centros ce
+		left join ce.cursoses cu
+		left join cu.alumnoses a 
+	group by ce.codCentro
+
+Contadores Cursos-Centro
+	Hibernate 5.
+	select ce.codCentro, coalesce(count(cu.codCurso),0)
+	from Centros ce 
+		left join Cursos cu on (ce.codCentro = cu.centros.codCentro)
+	group by ce.codCentro
+
+	Hibernate 6 e Hibernate 5 si en HQL Editor seleccionamos el dialecto Oracle 10g
+	select ce.codCentro, coalesce(count(cu.codCurso),0)
+	from Centros ce 
+		left join ce.cursoses cu
+	group by ce.codCentro
+
+Contadores Cursos-Alumnos	
+	select cu.codCurso, coalesce(count(a.numAlumno),0)
+	from Cursos cu
+		left join cu.alumnoses a
+	group by cu.codCurso
+	
+Contadores Departamentos-Asignaturas
+	select dep.codDepar, coalesce(count(asi.codAsig),0)
+	from Departamentos dep
+		left join dep.asignaturases asi 
+	group by dep.codDepar
+	
+Contadores Alumnos-NotaMedia
+	select a.numAlumno,nvl(avg(e.nota), 0)
+	from Alumnos a
+		left join a.evaluacioneses e
+	group by a.numAlumno	
+	
+EJERC3
+	select cu.codCurso, cu.denominacion,
+		   ce.codCentro, ce.nombre, ce.localidad
+	from Centros ce 
+		join ce.cursoses cu	
+	
+	En sentido opuesto es: SELECT c, c.centros FROM Cursos c
+	
+
+	select coalesce(avg(e.nota), 0)
+	from Alumnos a
+		left join a.evaluacioneses e
+	where a.numAlumno = 3010 and e.id.codEvaluacion = 1
+	
+EJERC4
+Los Centros
+select ce.codCentro
+from Centros ce 
+
+Numero de Cursos por Centro
+	select ce.codCentro, coalesce(count(cu.codCurso),0)
+	from Centros ce 
+		left join ce.cursoses cu
+	where ce.codCentro = 1
+	group by ce.codCentro
+		
+Numero de Alumnos por Centro
+	select ce.codCentro, coalesce(count(a.nombre),0)
+	from Centros ce
+		left join ce.cursoses cu 
+		left join cu.alumnoses a 
+	where ce.codCentro = 1
+	group by ce.codCentro
+	
+Número de Asignaturas por Centro
+	select ce.codCentro, count(asi.nombre)
+	from Centros ce 
+		left join ce.cursoses cu
+		left join cu.asignaturases asi
+	where ce.codCentro = 1
+	group by ce.codCentro
+	
+Nota media por Centro
+select ce.codCentro, round(coalesce(avg(ev.nota),0),1)
+from Centros ce 
+	left join ce.cursoses cu
+	left join cu.asignaturases asi
+	left join asi.evaluacioneses ev
+	where ce.codCentro = 1
+group by ce.codCentro
+
+Alumno maxima nota por centro
+select alu.nombre, round(coalesce(avg(ev.nota),0),1)
+from Centros ce
+	left join ce.cursoses cu
+	left join cu.alumnoses alu
+	left join alu.evaluacioneses ev
+	where ce.codCentro = 3	
+group by ce.codCentro, alu.nombre
+having coalesce(avg(ev.nota),0) in (
+
+	select max(coalesce(avg(ev2.nota),0))
+	from Centros ce2
+		left join ce2.cursoses cu2
+		left join cu2.alumnoses alu2
+		left join alu2.evaluacioneses ev2
+	where ce2 = ce
+	group by ce.codCentro, alu2.nombre
+)

@@ -1,0 +1,93 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>nadena</groupId>
+	<artifactId>tarea</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<dependencies>
+		<!-- Proporciona la correlación de clases Java con documentos XML:
+		unmarshalling, marshalling, validation -->
+		<dependency>
+			<groupId>jakarta.xml.bind</groupId>
+			<artifactId>jakarta.xml.bind-api</artifactId>
+			<version>4.0.1</version>
+		</dependency>
+
+		<!-- Contiene las fuentes necesarias para el procesamiento en tiempo de
+		ejecución -->
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+			<version>4.0.4</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!-- XStream es una biblioteca simple y rápida para serializar objetos a
+		XML
+		 y viceversa, con una huella de memoria reducida. -->
+		<dependency>
+			<groupId>com.thoughtworks.xstream</groupId>
+			<artifactId>xstream</artifactId>
+			<version>1.4.2</version>
+		</dependency>
+
+		<!-- Contiene las fuentes requeridas por los módulos XJC, JXC y Runtime -->
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-core</artifactId>
+			<version>4.0.4</version>
+		</dependency>
+
+		<!-- Implementación de JAXB -->
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+			<version>4.0.4</version>
+		</dependency>
+
+		<!-- Genera clases de java a partir de un esquema XSD 4.0.4-->
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-xjc</artifactId>
+			<version>4.0.4</version>
+		</dependency>
+
+		<!-- Genera un esquema XSD a partir de clases de java -->
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-jxc</artifactId>
+			<version>4.0.4</version>
+		</dependency>
+	</dependencies>
+
+	<properties>
+		<!-- Si no se especifica la versión de JRE por defecto Maven toma JRE1.8
+		cuando hacemos un update project -->
+		<maven.compiler.target>17</maven.compiler.target>
+		<maven.compiler.source>17</maven.compiler.source>
+		<!-- Si no se especifica la codificación cuando hacemos un update
+		project nos avisa-->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+	<build>
+		<plugins>
+			<!-- Esto permite exportar a una carpeta las dependencias maven 
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>process-sources</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/lib</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>-->
+		</plugins>
+	</build>
+</project>
